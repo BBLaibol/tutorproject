@@ -34,7 +34,6 @@ export default function RegisterForm({ setIsAuthenticated, onClose }) {
 
       if (res.ok) {
         if (isLogin && data.token) {
-          // Store all user data in localStorage
           localStorage.setItem("token", data.token);
           localStorage.setItem("userId", data.userId);
           localStorage.setItem("userRole", data.role);
@@ -44,14 +43,13 @@ export default function RegisterForm({ setIsAuthenticated, onClose }) {
 
           if (onClose) onClose();
 
-          // If user is a tutor and just logged in, redirect to profile creation page
           if (data.role === "tutor") {
             navigate("/profile/tutor");
           } else {
             navigate("/");
           }
         } else if (!isLogin) {
-          setIsLogin(true); // Switch to login after successful registration
+          setIsLogin(true);
           setError("Registration successful! Please log in.");
         }
       } else {

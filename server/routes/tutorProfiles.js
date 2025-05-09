@@ -3,7 +3,6 @@ const router = express.Router();
 const pool = require("../db");
 const auth = require("../middleware/auth");
 
-// Get all tutor profiles (PUBLIC ROUTE - no auth required)
 router.get("/all", async (req, res) => {
   try {
     const tutorQuery = await pool.query(`
@@ -19,17 +18,14 @@ router.get("/all", async (req, res) => {
   }
 });
 
-// Get all unique subjects (PUBLIC ROUTE - no auth required)
 router.get("/subjects", async (req, res) => {
   try {
-    // Query to extract all unique subjects across all profiles
     const subjectsQuery = await pool.query(`
         SELECT DISTINCT UNNEST(subjects) AS subject 
         FROM tutor_profiles
         ORDER BY subject
       `);
 
-    // Extract just the subject values
     const subjects = subjectsQuery.rows.map((row) => row.subject);
 
     res.json(subjects);
@@ -39,7 +35,6 @@ router.get("/subjects", async (req, res) => {
   }
 });
 
-// Get tutor profile by ID
 router.get("/:userId", auth, async (req, res) => {
   try {
     const { userId } = req.params;
@@ -60,13 +55,11 @@ router.get("/:userId", auth, async (req, res) => {
   }
 });
 
-// Create tutor profile
 router.post("/", auth, async (req, res) => {
   const { bio, subjects, price_per_hour } = req.body;
   const userId = req.user.userId;
 
   try {
-    // First check if the user is a tutor
     const userQuery = await pool.query("SELECT role FROM users WHERE id = $1", [
       userId,
     ]);
@@ -81,7 +74,6 @@ router.post("/", auth, async (req, res) => {
       });
     }
 
-    // Check if profile already exists
     const profileCheck = await pool.query(
       "SELECT * FROM tutor_profiles WHERE user_id = $1",
       [userId]
@@ -93,8 +85,6 @@ router.post("/", auth, async (req, res) => {
       });
     }
 
-    // Create new profile
-    // Make sure subjects is an array
     const subjectsArray = Array.isArray(subjects) ? subjects : [];
 
     await pool.query(
@@ -118,13 +108,11 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-// Update tutor profile
 router.put("/", auth, async (req, res) => {
   const { bio, subjects, price_per_hour } = req.body;
   const userId = req.user.userId;
 
   try {
-    // First check if the user is a tutor
     const userQuery = await pool.query("SELECT role FROM users WHERE id = $1", [
       userId,
     ]);
@@ -139,7 +127,6 @@ router.put("/", auth, async (req, res) => {
       });
     }
 
-    // Check if profile exists
     const profileCheck = await pool.query(
       "SELECT * FROM tutor_profiles WHERE user_id = $1",
       [userId]
@@ -151,10 +138,8 @@ router.put("/", auth, async (req, res) => {
       });
     }
 
-    // Make sure subjects is an array
     const subjectsArray = Array.isArray(subjects) ? subjects : [];
 
-    // Update existing profile
     await pool.query(
       `UPDATE tutor_profiles 
        SET bio = $1, subjects = $2, price_per_hour = $3

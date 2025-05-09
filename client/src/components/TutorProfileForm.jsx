@@ -15,7 +15,6 @@ export default function TutorProfileForm() {
 
   const navigate = useNavigate();
 
-  // Log auth information for debugging
   const debugAuthInfo = () => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
@@ -42,7 +41,6 @@ export default function TutorProfileForm() {
       }
 
       try {
-        // Check if profile already exists
         const response = await fetch(
           `http://localhost:5000/api/tutor-profiles/${userId}`,
           {
@@ -58,7 +56,6 @@ export default function TutorProfileForm() {
           const profileData = await response.json();
           console.log("Fetched profile data:", profileData);
 
-          // Convert subjects array to comma-separated string if it's an array
           const subjectsString = Array.isArray(profileData.subjects)
             ? profileData.subjects.join(", ")
             : profileData.subjects || "";
@@ -70,7 +67,6 @@ export default function TutorProfileForm() {
           });
           setIsEditing(true);
         } else if (response.status !== 404) {
-          // Only treat non-404 errors as actual errors
           const errorData = await response.json();
           throw new Error(errorData.message || "Failed to load profile");
         }
@@ -105,8 +101,6 @@ export default function TutorProfileForm() {
         return;
       }
 
-      // Prepare the profile data for submission
-      // Convert the comma-separated subjects string to an array
       const subjectsArray = profile.subjects
         .split(",")
         .map((subject) => subject.trim())
@@ -117,7 +111,6 @@ export default function TutorProfileForm() {
         subjects: subjectsArray,
       };
 
-      // Log what we're about to send
       console.log("Submitting profile with:", {
         method: isEditing ? "PUT" : "POST",
         profile: profileToSubmit,
@@ -141,11 +134,6 @@ export default function TutorProfileForm() {
       if (response.ok) {
         setMessage(data.message || "Profile saved successfully");
         setIsEditing(true);
-
-        // Don't redirect immediately - give user time to see the success message
-        // setTimeout(() => {
-        //   navigate("/search");
-        // }, 2000);
       } else {
         setError(data.message || "Failed to save profile");
       }

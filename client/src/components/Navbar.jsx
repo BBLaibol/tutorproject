@@ -8,8 +8,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, onAuthClick }) => {
   const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
-    // Get user email and role from localStorage when component mounts
-    // or when authentication state changes
     if (isAuthenticated) {
       const email = localStorage.getItem("userEmail");
       const role = localStorage.getItem("userRole");
@@ -19,13 +17,11 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, onAuthClick }) => {
   }, [isAuthenticated]);
 
   const handleSignOut = () => {
-    // Clear all authentication data from localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("userRole");
     localStorage.removeItem("userEmail");
 
-    // Update authentication state
     setIsAuthenticated(false);
   };
 
@@ -36,7 +32,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, onAuthClick }) => {
     { path: "/search", label: "Discover" },
   ];
 
-  // Add profile link for tutors
   if (isAuthenticated && userRole === "tutor") {
     navItems.push({ path: "/profile/tutor", label: "My Profile" });
   }

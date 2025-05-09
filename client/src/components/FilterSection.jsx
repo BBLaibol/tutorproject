@@ -5,7 +5,6 @@ const FilterSection = ({ filters, setFilters, tutors }) => {
   const [availableSubjects, setAvailableSubjects] = useState([]);
 
   useEffect(() => {
-    // Extract unique subjects from tutors
     if (Array.isArray(tutors) && tutors.length > 0) {
       const allSubjects = new Set();
 

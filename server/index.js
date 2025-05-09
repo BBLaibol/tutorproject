@@ -13,7 +13,7 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-// Debug middleware - log all incoming requests
+// Debug middleware
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   console.log("Request headers:", req.headers);
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/tutor-profiles", tutorProfilesRoutes);
 
-// Test route to verify server is working
+// Test route
 app.get("/api/test", (req, res) => {
   res.json({ message: "API is working!" });
 });
@@ -35,7 +35,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Server error", error: err.message });
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`API test endpoint: http://localhost:${PORT}/api/test`);
