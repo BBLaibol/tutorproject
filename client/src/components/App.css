@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Anka Coder";
+  src: url("/fonts/AnkaCoder-i.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Anka Coder";
+  src: url("/fonts/AnkaCoder-b.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Anka Coder", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #080a1f;
+  color: #ffffff;
+  user-select: none;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  scroll-margin-top: 70px;
+}

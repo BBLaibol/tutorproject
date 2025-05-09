@@ -1,0 +1,30 @@
+.contact-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 20px;
+  padding: 15px 0;
+  font-family: sans-serif;
+}
+
+.contact-item {
+  white-space: nowrap;
+}
+
+.divider {
+  color: #3498db;
+  font-weight: bold;
+}
+
+/* @media (max-width: 600px) {
+  .contact-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-card {
+    width: 90%;
+  }
+} */

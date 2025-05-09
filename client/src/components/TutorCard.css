@@ -1,0 +1,100 @@
+.tutor-card {
+  background-color: #1a1b3a;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 20vw;
+}
+
+.tutor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tutor-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  background-color: #4dabf7;
+  color: #080a1f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.tutor-info {
+  flex: 1;
+}
+
+.tutor-info h3 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.tutor-details {
+  margin-bottom: 1.5rem;
+}
+
+.tutor-details p {
+  color: #b0b0b0;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.tutor-details span {
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.star-filled {
+  color: #ffd700;
+}
+
+.star-empty {
+  color: #555;
+}
+
+.rating-value {
+  margin-left: 0.5rem;
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.inputemail {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #4dabf7;
+  color: #080a1f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: auto;
+  text-decoration: none;
+  text-align: center;
+}
+
+.contact-button:hover {
+  background-color: #3a8fd4;
+}

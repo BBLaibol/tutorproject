@@ -1,0 +1,86 @@
+.tutor-profile-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tutor-profile-container h2 {
+  color: #2c2d55;
+  margin-bottom: 25px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.tutor-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #2c2d55;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #4e4feb;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(78, 79, 235, 0.2);
+}
+
+.profile-submit-button {
+  margin-top: 10px;
+  padding: 14px 20px;
+  background-color: #4e4feb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.profile-submit-button:hover {
+  background-color: #3a3ad7;
+}
+
+.profile-submit-button:disabled {
+  background-color: #9898e5;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
